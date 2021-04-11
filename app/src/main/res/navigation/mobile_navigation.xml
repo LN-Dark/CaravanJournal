@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_location">
+
+    <fragment
+        android:id="@+id/navigation_location"
+        android:name="com.luanegra.caravanjournal.ui.location.LocationFragment"
+        android:label="@string/location"
+        tools:layout="@layout/fragment_location" />
+
+    <fragment
+        android:id="@+id/navigation_personanongrata"
+        android:name="com.luanegra.caravanjournal.ui.personanongrata.PersonaNonGrataFragment"
+        android:label="@string/persona_non_grata"
+        tools:layout="@layout/fragment_persona_non_grata" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.luanegra.caravanjournal.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

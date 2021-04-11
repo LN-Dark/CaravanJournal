@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CaravanJournal</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="location">Locations</string>
+    <string name="persona_non_grata">Persona non grata</string>
+    <string name="settings">Settings</string>
+    <string name="username">Username</string>
+    <string name="search">Search</string>
+</resources>
