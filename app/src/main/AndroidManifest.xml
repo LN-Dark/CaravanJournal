@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CaravanJournal">
-        <activity android:name=".ui.personanongrata.PersonaNonGrataDescriptionsActivity"></activity>
+        <activity android:name=".ui.personanongrata.NewPersonaNonGrataLocationDescriptionActivity"></activity>
+        <activity android:name=".ui.personanongrata.NewPersonaNonGrataLocationActivity" />
+        <activity android:name=".ui.location.NewHistoryLocationActivity" />
+        <activity android:name=".ui.location.NewLocationActivity" />
+        <activity android:name=".ui.personanongrata.PersonaNonGrataDescriptionsActivity" />
         <activity android:name=".ui.location.HistoryLocationActivity" />
         <activity android:name=".LogInActivity">
             <intent-filter>

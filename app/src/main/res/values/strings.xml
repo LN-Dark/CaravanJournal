@@ -13,4 +13,6 @@
     <string name="sign_in_with_google">Sign In with Google</string>
     <string name="city">city</string>
     <string name="date">date</string>
+    <string name="newlocation">New Location</string>
+    <string name="newpersonanongratalocation">New Persona Non Grata Location</string>
 </resources>

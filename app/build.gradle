@@ -109,6 +109,7 @@ dependencies {
     implementation 'com.github.technolifestyle:AutoImageFlipper:1.6.0'
     implementation("io.coil-kt:coil:1.1.0")
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.nambimobile.widgets:expandable-fab:1.0.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.luanegra.caravanjournal.LogInActivity
 import com.luanegra.caravanjournal.MainActivity
 import com.luanegra.caravanjournal.R
+import com.luanegra.caravanjournal.ui.location.NewLocationActivity
 
 class SettingsFragment : Fragment() {
     private var root: View? = null
@@ -24,10 +25,8 @@ class SettingsFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_settings, container, false)
         val btn_logout: TextView = root!!.findViewById(R.id.btn_logout)
         btn_logout.setOnClickListener {
-            activity?.let{
-                val intent = Intent (it, LogInActivity::class.java)
-                it.startActivity(intent)
-            }
+            val intent = Intent(root!!.context, LogInActivity::class.java)
+            startActivity(intent)
             FirebaseAuth.getInstance().signOut()
         }
 

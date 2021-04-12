@@ -11,6 +11,7 @@
     <color name="colorWhite">#A0A0A3</color>
     <color name="colorGray">#4E4E4E</color>
     <color name="colorDarkGray">#3C3C3C</color>
+    <color name="colorOrange">#FF5722</color>
 
     <color name="colorOnline">#70F427</color>
     <color name="colorOffline">#969795</color>

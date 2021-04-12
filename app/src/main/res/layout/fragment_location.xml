@@ -38,5 +38,41 @@
         app:layout_constraintTop_toBottomOf="@+id/tf_searchlocations_main"
         tools:listitem="@layout/history_object" />
 
+    <com.nambimobile.widgets.efab.ExpandableFabLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.nambimobile.widgets.efab.ExpandableFab
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:efab_color="@color/colorOrange"
+            app:efab_icon="@drawable/ic_add_black_24dp"
+            android:layout_gravity="bottom|end" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/efab_location_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_color="@color/colorOrange"
+            app:fab_icon="@drawable/ic_add_location_black_24dp"
+            app:label_text="@string/newlocation" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/efab_personanongrata_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_color="@color/colorOrange"
+            app:fab_icon="@drawable/ic_remove_circle_outline_black_24dp"
+            app:label_text="@string/newpersonanongratalocation" />
+
+
+    </com.nambimobile.widgets.efab.ExpandableFabLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
