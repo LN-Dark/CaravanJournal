@@ -17,7 +17,6 @@ class PersonaNonGrataFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_persona_non_grata, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
 
         return root
     }

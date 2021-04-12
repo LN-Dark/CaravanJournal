@@ -8,4 +8,9 @@
     <string name="settings">Settings</string>
     <string name="username">Username</string>
     <string name="search">Search</string>
+    <string name="logout">LogOut</string>
+    <string name="caravan_journal">Caravan Journal</string>
+    <string name="sign_in_with_google">Sign In with Google</string>
+    <string name="city">city</string>
+    <string name="date">date</string>
 </resources>

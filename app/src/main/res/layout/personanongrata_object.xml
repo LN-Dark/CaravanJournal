@@ -17,19 +17,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="vertical">
 
-            <technolifestyle.com.imageslider.FlipperLayout
-                android:id="@+id/_history_object"
-                android:layout_width="match_parent"
-                android:layout_height="250dp" />
-
             <TextView
-                android:id="@+id/cityname_history_object"
+                android:id="@+id/cityname_personanongrata_object"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/city"
+                android:gravity="center"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:maxLines="5"
