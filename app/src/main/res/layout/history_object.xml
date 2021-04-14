@@ -21,8 +21,9 @@
             android:orientation="vertical">
 
             <technolifestyle.com.imageslider.FlipperLayout
-                android:id="@+id/_history_object"
+                android:id="@+id/image_history_object"
                 android:layout_width="match_parent"
+                android:background="@drawable/ic_image_black_24dp"
                 android:layout_height="250dp" />
 
             <TextView

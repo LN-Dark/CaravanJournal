@@ -10,18 +10,21 @@
         android:id="@+id/tf_searchlocations_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSecondaryVariant"
+        android:background="@color/colorPrimaryVariant"
         android:hint="@string/search"
+        app:startIconDrawable="@drawable/ic_search_black_24dp"
+        app:startIconTint="@color/colorWhite"
         app:hintTextColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
         app:boxStrokeColor="@color/colorWhite"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_search_locations_main"
-            android:background="@color/colorSecondaryVariant"
+            android:background="@color/colorPrimaryVariant"
             android:layout_width="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_height="wrap_content" />
