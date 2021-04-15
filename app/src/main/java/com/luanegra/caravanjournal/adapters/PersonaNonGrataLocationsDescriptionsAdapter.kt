@@ -1,4 +1,39 @@
 package com.luanegra.caravanjournal.adapters
 
-class PersonaNonGrataLocationsDescriptionsAdapter {
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.luanegra.caravanjournal.R
+import com.luanegra.caravanjournal.models.PersonanonGrataLocation_Description
+
+
+class PersonaNonGrataLocationsDescriptionsAdapter(private val mContext: Context, private val mLocationsDescriptionList: List<PersonanonGrataLocation_Description>): RecyclerView.Adapter<PersonaNonGrataLocationsDescriptionsAdapter.ViewHolder?>() {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var tv_discription_personanongrata_object: TextView
+
+        init {
+            tv_discription_personanongrata_object = itemView.findViewById(R.id.tv_discription_personanongrata_object)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view: View? = LayoutInflater.from(mContext).inflate(
+                R.layout.personanongrata_discription_object,
+                parent,
+                false
+        )
+        return ViewHolder(view!!)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val location: PersonanonGrataLocation_Description = mLocationsDescriptionList[position]
+        holder.tv_discription_personanongrata_object.text = location.getdescription()
+    }
+
+    override fun getItemCount(): Int {
+        return mLocationsDescriptionList.size
+    }
 }

@@ -20,10 +20,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <technolifestyle.com.imageslider.FlipperLayout
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                 android:id="@+id/image_history_object"
                 android:layout_width="match_parent"
-                android:background="@drawable/ic_image_black_24dp"
+                app:showTopShadow="false"
+                app:showBottomShadow="false"
+                app:imagePlaceholder="@drawable/imagenotfound"
+                app:autoPlay="true"
+                app:autoPlayDelay="5000"
                 android:layout_height="250dp" />
 
             <TextView
@@ -31,8 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/city"
+                android:layout_margin="7dp"
                 android:textAlignment="center"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:maxLines="5"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>

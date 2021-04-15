@@ -1,10 +1,7 @@
 package com.luanegra.caravanjournal
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
@@ -13,9 +10,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.luanegra.caravanjournal.models.Users
 import com.luanegra.caravanjournal.ui.location.LocationFragment
-import com.luanegra.caravanjournal.ui.location.NewLocationActivity
-import com.luanegra.caravanjournal.ui.personanongrata.NewPersonaNonGrataLocationActivity
-import com.luanegra.caravanjournal.ui.personanongrata.PersonaNonGrataDescriptionsActivity
 import com.luanegra.caravanjournal.ui.personanongrata.PersonaNonGrataFragment
 import com.luanegra.caravanjournal.ui.settings.SettingsFragment
 import de.hdodenhof.circleimageview.CircleImageView

@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.luanegra.caravanjournal.LogInActivity
-import com.luanegra.caravanjournal.MainActivity
 import com.luanegra.caravanjournal.R
-import com.luanegra.caravanjournal.ui.location.NewLocationActivity
 
 class SettingsFragment : Fragment() {
     private var root: View? = null

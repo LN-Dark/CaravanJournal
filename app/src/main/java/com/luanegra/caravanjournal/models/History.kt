@@ -6,15 +6,16 @@ class History {
     private var locationUid: String = ""
     private var description: String = ""
     private var photoUrl: String = ""
+    private var data: String = ""
 
     constructor()
-    constructor(uid: String, locationUid: String, description: String, photoUrl: String) {
+    constructor(uid: String, locationUid: String, description: String, photoUrl: String, data: String) {
         this.uid = uid
         this.locationUid = locationUid
         this.description = description
         this.photoUrl = photoUrl
+        this.data = data
     }
-
 
     fun getUid(): String {
         return uid
@@ -46,5 +47,13 @@ class History {
 
     fun setphotoUrl(photoUrl: String){
         this.photoUrl = photoUrl
+    }
+
+    fun getdata(): String {
+        return data
+    }
+
+    fun setdata(data: String){
+        this.data = data
     }
 }

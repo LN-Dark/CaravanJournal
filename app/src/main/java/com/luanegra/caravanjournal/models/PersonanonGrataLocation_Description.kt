@@ -4,12 +4,14 @@ class PersonanonGrataLocation_Description {
     private var uid: String = ""
     private var locationUid: String = ""
     private var description: String = ""
+    private var data: String = ""
 
     constructor()
-    constructor(uid: String, locationUid: String, description: String) {
+    constructor(uid: String, locationUid: String, description: String, data: String) {
         this.uid = uid
         this.locationUid = locationUid
         this.description = description
+        this.data = data
     }
 
 
@@ -35,6 +37,14 @@ class PersonanonGrataLocation_Description {
 
     fun setdescription(description: String){
         this.description = description
+    }
+
+    fun getdata(): String {
+        return data
+    }
+
+    fun setdata(data: String){
+        this.data = data
     }
 
 }

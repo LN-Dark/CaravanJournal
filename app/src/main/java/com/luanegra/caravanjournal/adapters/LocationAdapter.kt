@@ -5,22 +5,24 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView.ScaleType
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.luanegra.caravanjournal.MainActivity
 import com.luanegra.caravanjournal.R
 import com.luanegra.caravanjournal.models.History
 import com.luanegra.caravanjournal.models.Locations
 import com.luanegra.caravanjournal.ui.location.HistoryLocationActivity
-import technolifestyle.com.imageslider.FlipperView
+import org.imaginativeworld.whynotimagecarousel.CarouselItem
+import org.imaginativeworld.whynotimagecarousel.ImageCarousel
+import org.imaginativeworld.whynotimagecarousel.OnItemClickListener
 
 class LocationAdapter(private val mContext: Context, private val mLocationsList: List<Locations>): RecyclerView.Adapter<LocationAdapter.ViewHolder?>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var image_history_object: technolifestyle.com.imageslider.FlipperLayout
+        var image_history_object: ImageCarousel
         var cityname_history_object: TextView
         init {
             cityname_history_object = itemView.findViewById(R.id.cityname_history_object)
@@ -44,37 +46,63 @@ class LocationAdapter(private val mContext: Context, private val mLocationsList:
     }
 
     fun getImages(holder: ViewHolder, location: Locations){
-        val arrayList = ArrayList<String>()
         val firebaseUser = FirebaseAuth.getInstance().currentUser!!.uid
         var refLocations: DatabaseReference? = null
         refLocations = FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser).child("Locations").child(location.getUid()).child("History")
         refLocations.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    val list = mutableListOf<CarouselItem>()
                     for (history in snapshot.children) {
                         val newHistory: History? = history.getValue(History::class.java)
                         val strs = newHistory!!.getphotoUrl().split("¨")
                         for (url in strs){
-                            arrayList.add(url)
+                            list.add(
+                                    CarouselItem(
+                                            imageUrl = url,
+                                            caption = newHistory.getdata()
+                                    )
+                            )
                         }
-                    }
-                    val num_of_pages = arrayList.size
-                    for (i in 0 until num_of_pages) {
-                        val view = FlipperView(mContext)
-                        view.setImageScaleType(ScaleType.CENTER_CROP)
-                                .setImage(R.drawable.ic_image_black_24dp) { imageView, image ->
-                                    imageView.load(arrayList[i])
-                                }
-                                .setOnFlipperClickListener(object : FlipperView.OnFlipperClickListener {
-                                    override fun onFlipperClick(flipperView: FlipperView) {
-                                        val intent = Intent(mContext, HistoryLocationActivity::class.java)
-                                        mContext.startActivity(intent)
-                                    }
 
-                                })
-                        holder.image_history_object.scrollTimeInSec = 5
-                        holder.image_history_object.addFlipperView(view)
                     }
+                    holder.image_history_object.onItemClickListener = object : OnItemClickListener {
+                        override fun onClick(position: Int, carouselItem: CarouselItem) {
+                            val intent = Intent(mContext, HistoryLocationActivity::class.java)
+                            intent.putExtra("uid", location.getUid())
+                            intent.putExtra("locationName", location.getlocationName())
+                            mContext.startActivity(intent)
+                        }
+
+                        override fun onLongClick(position: Int, dataObject: CarouselItem) {
+                            // ...
+                        }
+
+                    }
+                    holder.image_history_object.addData(list)
+                }else{
+                    val list = mutableListOf<CarouselItem>()
+                        list.add( CarouselItem(
+                            imageUrl = mContext.resources.getDrawable(R.drawable.imagenotfound).toString(),
+                            caption = mContext.getString(R.string.youdonthaveahistoryinthislocation)
+                        ))
+                    holder.image_history_object.showIndicator = false
+                    holder.image_history_object.showNavigationButtons = false
+                    holder.image_history_object.onItemClickListener = object : OnItemClickListener {
+                        override fun onClick(position: Int, carouselItem: CarouselItem) {
+                            val intent = Intent(mContext, HistoryLocationActivity::class.java)
+                            intent.putExtra("uid", location.getUid())
+                            intent.putExtra("locationName", location.getlocationName())
+                            mContext.startActivity(intent)
+                        }
+
+                        override fun onLongClick(position: Int, dataObject: CarouselItem) {
+                            // ...
+                        }
+
+                    }
+                    holder.image_history_object.addData(list)
+
                 }
             }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecondaryVariant"
     tools:context=".ui.personanongrata.PersonaNonGrataDescriptionsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_locationdescriptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryVariant">
@@ -36,7 +37,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
-        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -59,7 +60,7 @@
             android:id="@+id/tiet_search_descriptions_personanongrata"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorSecondaryVariant"
+            android:background="@color/colorPrimaryVariant"
             android:textColor="@color/colorWhite" />
 
     </com.google.android.material.textfield.TextInputLayout>

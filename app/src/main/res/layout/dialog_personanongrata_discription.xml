@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorSecondaryVariant"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tf_add_discription_dialog">
+
+        <Button
+            android:id="@+id/save_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorChatRight"
+            android:text="@string/save"
+            android:textColor="@color/colorWhite"/>
+
+        <Button
+            android:id="@+id/calcel_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorChatRight"
+            android:text="@string/cancel"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tf_add_discription_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryVariant"
+        android:hint="@string/tell_us_what_happened"
+        app:startIconDrawable="@drawable/ic_add_location_black_24dp"
+        app:startIconTint="@color/colorWhite"
+        app:hintTextColor="@color/colorWhite"
+        android:minHeight="100dp"
+        android:textColorHint="@color/colorWhite"
+        app:boxStrokeColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_add_discription_dialog"
+            android:background="@color/colorPrimaryVariant"
+            android:layout_width="match_parent"
+            android:maxLines="50"
+            android:minHeight="100dp"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
