@@ -1,5 +1,6 @@
 package com.luanegra.caravanjournal.ui.location
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -13,6 +14,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.luanegra.caravanjournal.MainActivity
 import com.luanegra.caravanjournal.R
 import com.luanegra.caravanjournal.adapters.LocationHistoryAdapter
 import com.luanegra.caravanjournal.adapters.PersonaNonGrataLocationsDescriptionsAdapter
@@ -66,7 +68,10 @@ class HistoryLocationActivity : AppCompatActivity() {
         })
         val new_history_location: ExpandableFab = findViewById(R.id.new_history_location)
         new_history_location.setOnClickListener {
-           // createNewPersonaNonGrataDexcription()
+            val intent = Intent(this@HistoryLocationActivity, NewHistoryActivity::class.java)
+            intent.putExtra("uid", locationId)
+            intent.putExtra("locationName", locationName)
+            startActivity(intent)
         }
         mHistory = ArrayList()
         recycler_history = findViewById(R.id.recycler_locations_history_main)

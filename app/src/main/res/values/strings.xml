@@ -26,4 +26,6 @@
     <string name="writesomethingtobepersonanongrata">Write something that happened in this location so it be Persona Non Grata</string>
     <string name="descriptionofpersonanongratacreated">Descriptionof persona non grata created!</string>
     <string name="description">Description</string>
+    <string name="selectanimagefirst">Select an image first.</string>
+    <string name="writeadescriptionfirst">Write a description first.</string>
 </resources>

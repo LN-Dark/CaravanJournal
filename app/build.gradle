@@ -63,7 +63,7 @@ android {
         versionCode 1
         versionName "1.0"
         versionName "1.0" + versionBuild
-        setProperty("archivesBaseName", "BlackMoonSocial_" + buildTime())
+        setProperty("archivesBaseName", "CaravanJournal_" + buildTime())
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
@@ -106,11 +106,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:19.7.0'
     implementation 'com.google.firebase:firebase-messaging-ktx:21.0.1'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
-    implementation 'me.relex:circleindicator:2.1.4'
-    implementation 'com.github.ImaginativeShohag:Why-Not-Image-Carousel:v1.0.0'
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:1.3.0'
     implementation("io.coil-kt:coil:1.1.0")
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.nambimobile.widgets:expandable-fab:1.0.2'
+    implementation 'com.github.AnilFurkanOkcun:UWMediaPicker-Android:1.3.2'
+    implementation 'com.afollestad:date-picker:0.3.1'
+    implementation 'com.github.ldt-libs:SpringBackLayout:1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
