@@ -24,8 +24,26 @@
     <string name="youdonthaveahistoryinthislocation">You don´t have a history in this location!</string>
     <string name="tell_us_what_happened">Tell us what happened...</string>
     <string name="writesomethingtobepersonanongrata">Write something that happened in this location so it be Persona Non Grata</string>
-    <string name="descriptionofpersonanongratacreated">Descriptionof persona non grata created!</string>
+    <string name="descriptionofpersonanongratacreated">Description of Persona Non Grata Created!</string>
     <string name="description">Description</string>
     <string name="selectanimagefirst">Select an image first.</string>
     <string name="writeadescriptionfirst">Write a description first.</string>
+    <string name="newhistorycreated">New history created.</string>
+    <string name="addimages">Add Images</string>
+    <string name="viewfullimages">View Full Images</string>
+    <string name="deletehistory">Delete history</string>
+    <string name="chooseanoption">Choose an option:</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="deletelocation">Delete location</string>
+    <string name="deletethislocation">Do you realy want to delete this location?</string>
+    <string name="removethishistory">Do you realy want to delete this history?</string>
+    <string name="edit">Edit</string>
+    <string name="editnewhistory">Edit/New History</string>
+    <string name="edithistory">Edit history</string>
+    <string name="newhistory">New history</string>
+    <string name="creator">Witness:&#160;&#160;&#160;</string>
+    <string name="creator_name">Witness Name</string>
+    <string name="if_you_like_my_work_please_help_with_a_donation">If you like my work please help with a donation.</string>
+    <string name="all_my_work_are_in_github">All my work are in GitHub</string>
 </resources>

@@ -198,6 +198,7 @@ class PersonaNonGrataFragment : Fragment() {
                     val userHashMap = HashMap<String, Any>()
                     val idBlock = refLocations.push().key.toString()
                     userHashMap["uid"] = idBlock
+                    userHashMap["creatorUid"] = FirebaseAuth.getInstance().currentUser.uid
                     userHashMap["locationName"] = tiet_add_locations_dialog.text.toString()
                     refLocations.child(idBlock).updateChildren(userHashMap)
                     Toast.makeText(

@@ -148,6 +148,7 @@ class LocationFragment : Fragment() {
                     val idBlock = refLocations.push().key.toString()
                     userHashMap["uid"] = idBlock
                     userHashMap["locationName"] = tiet_add_locations_dialog.text.toString()
+                    userHashMap["creatorUid"] = FirebaseAuth.getInstance().currentUser.uid
                     refLocations.child(idBlock).updateChildren(userHashMap)
                     Toast.makeText(
                             context,

@@ -1,15 +1,13 @@
 package com.luanegra.caravanjournal.ui.location
 
-import android.R.attr.data
+import android.app.ProgressDialog
 import android.graphics.Bitmap
-import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import coil.load
 import com.afollestad.date.DatePicker
 import com.afollestad.date.dayOfMonth
@@ -41,16 +39,23 @@ class NewHistoryActivity : AppCompatActivity() {
     var datePicker: DatePicker? = null
     var btn_save_new_history: Button? = null
     var locationId: String = ""
+    var historyDate: String = ""
+    var photoUrl: String = ""
+    var typeNew: String = ""
     var locationName: String = ""
+    var historyDescription: String = ""
     var firebaseUser: FirebaseUser?= null
     var listUri: List<String>?= null
     private var refUsers: DatabaseReference? = null
+    private var progressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_history)
         val toolbar: MaterialToolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
+        progressDialog = ProgressDialog(this)
+        progressDialog!!.setMessage("Uploading ...")
         firebaseUser = FirebaseAuth.getInstance().currentUser
         refUsers = FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser!!.uid)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -62,13 +67,21 @@ class NewHistoryActivity : AppCompatActivity() {
         val profile_image: CircleImageView = findViewById(R.id.profileimage_toolbar_main)
         supportActionBar!!.title = ""
         intent = intent
+        typeNew = intent.getStringExtra("type").toString()
         locationId = intent.getStringExtra("uid").toString()
         locationName = intent.getStringExtra("locationName").toString()
+        historyDate = intent.getStringExtra("historyDate").toString()
+        historyDescription = intent.getStringExtra("historyDescription").toString()
+        photoUrl = intent.getStringExtra("photoUrl").toString()
         refUsers!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val user: Users? = snapshot.getValue(Users::class.java)
-                    user_name.text = locationName
+                    if (typeNew.equals("2")){
+                        user_name.text = getString(R.string.edithistory)
+                    }else{
+                        user_name.text = getString(R.string.newhistory)
+                    }
                     profile_image.load(user!!.getprofile())
                 }
             }
@@ -80,13 +93,7 @@ class NewHistoryActivity : AppCompatActivity() {
         tiet_description_history = findViewById(R.id.tiet_description_history)
         datePicker = findViewById(R.id.datePicker)
         btn_save_new_history = findViewById(R.id.btn_save_new_history)
-        val list = mutableListOf<CarouselItem>()
-        list.add(
-                CarouselItem(
-                        imageDrawable = R.drawable.imagenotfound,
-                        caption = "Add Images"
-                )
-        )
+
         listUri = ArrayList()
         image_history_object!!.onItemClickListener = object : OnItemClickListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
@@ -121,19 +128,51 @@ class NewHistoryActivity : AppCompatActivity() {
             }
 
         }
-        image_history_object!!.addData(list)
         btn_save_new_history!!.setOnClickListener {
             saveNewHistory()
         }
-        datePicker!!.setDate(
-                year = 2019,
-                month = Calendar.JUNE,
-                selectedDate = 17
-        )
-        datePicker!!.setDate(Calendar.getInstance())
+        if (typeNew.equals("2")){
+            val list = mutableListOf<CarouselItem>()
+            val strs = photoUrl.split("¨")
+            for (url in strs){
+                list.add(
+                        CarouselItem(
+                                imageUrl = url,
+                                caption = ""
+                        )
+                )
+            }
+            image_history_object!!.addData(list)
+            tiet_description_history!!.setText(historyDescription)
+            var dateDay = ""
+            var dateMonth = ""
+            var dateYear = ""
+            val strDate = historyDate.split("-")
+            dateDay = strDate[0]
+            dateMonth = strDate[1]
+            dateYear = strDate[2]
+            datePicker!!.setDate(
+                    year = dateYear.toInt(),
+                    month = dateMonth.toInt(),
+                    selectedDate = dateDay.toInt()
+            )
+
+        }else{
+            val list = mutableListOf<CarouselItem>()
+            list.add(
+                    CarouselItem(
+                            imageDrawable = R.drawable.imagenotfound,
+                            caption = getString(R.string.addimages)
+                    )
+            )
+            image_history_object!!.addData(list)
+            datePicker!!.setDate(Calendar.getInstance())
+        }
+
     }
 
     private fun saveNewHistory(){
+        progressDialog!!.show()
         if (!tiet_description_history!!.text.isNullOrEmpty()){
             if ((listUri as ArrayList<String>).size != 0){
                 val selectedDate: Calendar? = datePicker!!.getDate()
@@ -145,7 +184,7 @@ class NewHistoryActivity : AppCompatActivity() {
                 userHashMap["data"] = "${selectedDate!!.dayOfMonth}-${selectedDate.month}-${selectedDate.year}"
                 userHashMap["description"] = tiet_description_history!!.text.toString()
                 userHashMap["locationUid"] = locationId
-                uploadv2(idBlock)
+                uploadImages(idBlock)
                 refLocations.child(idBlock).updateChildren(userHashMap)
             }else{
                 Toast.makeText(
@@ -166,15 +205,16 @@ class NewHistoryActivity : AppCompatActivity() {
     private var storageReference: StorageReference? = null
     var strUri = ""
 
-    fun uploadv2(idBlock: String){
+    fun uploadImages(idBlock: String){
         var refLocations: DatabaseReference? = null
         refLocations = FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser.uid).child("Locations").child(locationId).child("History").child(idBlock)
         val userHashMap = HashMap<String, Any>()
         storageReference = FirebaseStorage.getInstance().reference
         val uri = arrayOfNulls<Uri>((listUri as ArrayList<String>).size)
         for (i in 0 until (listUri as ArrayList<String>).size) {
+            progressDialog!!.show()
             uri[i] = Uri.parse("file://" + (listUri as ArrayList<String>)[i])
-            val ref = storageReference?.child("$idBlock/" + UUID.randomUUID().toString())
+            val ref = storageReference?.child("History_Images/$idBlock/" + UUID.randomUUID().toString())
             val uploadTask = uri[i]?.let { ref?.putFile(it) }
 
             val urlTask = uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
@@ -195,14 +235,16 @@ class NewHistoryActivity : AppCompatActivity() {
                     userHashMap["photoUrl"] = strUri
                     refLocations.updateChildren(userHashMap)
                     if (i == (listUri as ArrayList<String>).size - 1){
+                        progressDialog!!.dismiss()
                         Toast.makeText(
                                 this@NewHistoryActivity,
-                                "New history created.",
+                                getString(R.string.newhistorycreated),
                                 Toast.LENGTH_LONG
                         ).show()
                         onBackPressed()
                     }
                 } else {
+                    progressDialog!!.dismiss()
                     Toast.makeText(
                             this@NewHistoryActivity,
                             task.exception!!.message,
@@ -210,6 +252,7 @@ class NewHistoryActivity : AppCompatActivity() {
                     ).show()
                 }
             }?.addOnFailureListener{
+                progressDialog!!.dismiss()
                 Toast.makeText(
                         this@NewHistoryActivity,
                         it.message,

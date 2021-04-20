@@ -71,6 +71,7 @@ class HistoryLocationActivity : AppCompatActivity() {
             val intent = Intent(this@HistoryLocationActivity, NewHistoryActivity::class.java)
             intent.putExtra("uid", locationId)
             intent.putExtra("locationName", locationName)
+            intent.putExtra("type", "1")
             startActivity(intent)
         }
         mHistory = ArrayList()

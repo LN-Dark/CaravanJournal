@@ -163,6 +163,7 @@ class PersonaNonGrataDescriptionsActivity : AppCompatActivity() {
                 val userHashMap = HashMap<String, Any>()
                 val idBlock = refLocations.push().key.toString()
                 userHashMap["uid"] = idBlock
+                userHashMap["creatorUid"] = FirebaseAuth.getInstance().currentUser.uid
                 userHashMap["description"] = tiet_add_discription_dialog.text.toString()
                 refLocations.child(idBlock).updateChildren(userHashMap)
                 Toast.makeText(
