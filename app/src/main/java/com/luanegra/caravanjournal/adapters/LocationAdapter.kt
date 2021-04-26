@@ -47,7 +47,7 @@ class LocationAdapter(private val mContext: Context, private val mLocationsList:
         val location: Locations = mLocationsList[position]
         holder.cityname_history_object.text = location.getlocationName()
         val firebaseUser = FirebaseAuth.getInstance().currentUser!!.uid
-        var refLocations: DatabaseReference? = null
+        var refLocations: DatabaseReference?
         var strsImageUrl: String = ""
         refLocations = FirebaseDatabase.getInstance().reference.child("users").child(firebaseUser).child("Locations").child(location.getUid()).child("History")
         refLocations.addValueEventListener(object : ValueEventListener {

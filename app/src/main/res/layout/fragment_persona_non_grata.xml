@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".ui.personanongrata.PersonaNonGrataFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +54,7 @@
         <com.nambimobile.widgets.efab.ExpandableFab
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:efab_color="@color/colorOrange"
+            app:efab_color="@color/colorSecondary"
             app:efab_icon="@drawable/ic_add_black_24dp"
             android:layout_gravity="bottom|end" />
 
@@ -61,7 +62,7 @@
             android:id="@+id/efab_location_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_color="@color/colorOrange"
+            app:fab_color="@color/colorOnSecondary"
             app:fab_icon="@drawable/ic_add_location_black_24dp"
             app:label_text="@string/newlocation" />
 
@@ -69,7 +70,7 @@
             android:id="@+id/efab_personanongrata_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_color="@color/colorOrange"
+            app:fab_color="@color/colorOnSecondary"
             app:fab_icon="@drawable/ic_remove_circle_outline_black_24dp"
             app:label_text="@string/newpersonanongratalocation" />
 

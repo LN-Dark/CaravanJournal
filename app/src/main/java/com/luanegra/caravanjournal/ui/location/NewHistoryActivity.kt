@@ -101,7 +101,6 @@ class NewHistoryActivity : AppCompatActivity() {
                     .with(this@NewHistoryActivity)
                     .setGalleryMode(UwMediaPicker.GalleryMode.ImageGallery)
                     .setGridColumnCount(4)
-                    .setMaxSelectableMediaCount(10)
                     .setLightStatusBar(true)
                     .enableImageCompression(true)
                     .setCompressionMaxWidth(1280F)

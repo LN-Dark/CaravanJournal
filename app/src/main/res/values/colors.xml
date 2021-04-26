@@ -10,8 +10,10 @@
     <color name="colorOnSecondary">#2B2B33</color>
     <color name="colorWhite">#A0A0A3</color>
     <color name="colorGray">#4E4E4E</color>
+    <color name="colorWhiteGray">#575656</color>
     <color name="colorDarkGray">#3C3C3C</color>
-    <color name="colorOrange">#FF5722</color>
+    <color name="colorOrange">#FF6E40</color>
+    <color name="colorBackground">#595959</color>
 
     <color name="colorOnline">#70F427</color>
     <color name="colorOffline">#969795</color>
